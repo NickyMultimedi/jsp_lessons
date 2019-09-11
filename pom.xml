@@ -18,7 +18,7 @@
     </properties>
 
     <build>
-        <finalName>Les-Web</finalName>
+        <finalName>JSP</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
