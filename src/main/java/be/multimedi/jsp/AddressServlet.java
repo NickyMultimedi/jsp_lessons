@@ -11,6 +11,7 @@ import java.io.IOException;
 @WebServlet(name = "Address", value = "/Address")
 public class AddressServlet extends HttpServlet {
     AddressBean address;
+    AddressService service;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,6 +20,18 @@ public class AddressServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        address = new AddressBean();
+        address.setName(req.getParameter("naam"));
+        address.setLastName(req.getParameter("achternaam"));
+        address.setStreet(req.getParameter("straat"));
+        address.setNumber(Integer.parseInt(req.getParameter("huisnummer")));
+        address.setPostalCode(req.getParameter("postcode"));
+        address.setDistrict(req.getParameter("gemeente"));
+        address.setCountry(req.getParameter("land"));
+        address.setTelephone(req.getParameter("telefoon"));
+        address.setEmail(req.getParameter("email"));
+
+        service.registerAddress(address);
+
     }
 }
