@@ -8,4 +8,21 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
     <request-character-encoding>UTF-8</request-character-encoding>
     <response-character-encoding>UTF-8</response-character-encoding>
 
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <jsp-file>/pages/HelloWorld.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/HelloWorld</url-pattern>
+    </servlet-mapping>
+
+<!--    <jsp-config>-->
+<!--        <jsp-property-group>-->
+<!--            <url-pattern>/*</url-pattern>-->
+<!--            <include-coda>/pages/footer.jsp</include-coda>-->
+<!--        </jsp-property-group>-->
+<!--    </jsp-config>-->
+    
 </web-app>
