@@ -13,7 +13,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/HelloForm.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/sayshello/HelloForm.jsp").forward(req, resp);
     }
 
     @Override
@@ -22,6 +22,6 @@ public class HelloServlet extends HttpServlet {
         hello.setName(req.getParameter("name"));
         service.handleHello(hello);
         req.setAttribute("hello", hello);
-        req.getRequestDispatcher("/WEB-INF/pages/HelloResult.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/sayshello/HelloResult.jsp").forward(req, resp);
     }
 }

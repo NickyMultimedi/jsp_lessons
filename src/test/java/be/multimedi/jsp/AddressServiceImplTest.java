@@ -1,8 +1,7 @@
 package be.multimedi.jsp;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import be.multimedi.jsp.address.AddressBean;
+import be.multimedi.jsp.address.AddressService;
 
 class AddressServiceImplTest {
     AddressService service;

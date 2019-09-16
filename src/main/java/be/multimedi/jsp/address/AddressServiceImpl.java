@@ -1,4 +1,4 @@
-package be.multimedi.jsp;
+package be.multimedi.jsp.address;
 
 public class AddressServiceImpl implements AddressService {
     @Override

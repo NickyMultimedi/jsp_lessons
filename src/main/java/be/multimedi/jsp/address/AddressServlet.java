@@ -1,6 +1,5 @@
-package be.multimedi.jsp;
+package be.multimedi.jsp.address;
 
-import javax.persistence.NamedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +14,7 @@ public class AddressServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/AddressForm.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/address/AddressForm.jsp").forward(req, resp);
     }
 
     @Override
@@ -33,5 +32,8 @@ public class AddressServlet extends HttpServlet {
 
         service.registerAddress(address);
 
+        req.setAttribute("address", address);
+
+        req.getRequestDispatcher("/WEB-INF/pages/address/AddressResult.jsp").forward(req, resp);
     }
 }

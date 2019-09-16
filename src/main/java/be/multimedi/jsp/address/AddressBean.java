@@ -1,4 +1,4 @@
-package be.multimedi.jsp;
+package be.multimedi.jsp.address;
 
 import java.io.Serializable;
 import java.util.Objects;
