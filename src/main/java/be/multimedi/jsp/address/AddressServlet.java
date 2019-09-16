@@ -1,5 +1,6 @@
 package be.multimedi.jsp.address;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,10 @@ public class AddressServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        service = new AddressServiceImpl();
+        service = (AddressServiceImpl) getServletContext().getAttribute(AddressListener.ADDRESS_SERVICE);
+        if (service == null) {
+            throw new ServletException("service not available!");
+        }
     }
 
     @Override
@@ -39,6 +43,7 @@ public class AddressServlet extends HttpServlet {
         address.setCountry(req.getParameter("land"));
         address.setTelephone(req.getParameter("telefoon"));
         address.setEmail(req.getParameter("email"));
+
 
         service.registerAddress(address);
 
