@@ -19,7 +19,12 @@ public class AddressServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/address/AddressForm.jsp").forward(req, resp);
+        Object OptionalAddress = req.getSession().getAttribute("address");
+        if (OptionalAddress != null) {
+            req.getRequestDispatcher("/WEB-INF/pages/address/AddressResult.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/WEB-INF/pages/address/AddressForm.jsp").forward(req, resp);
+        }
     }
 
     @Override
@@ -37,7 +42,8 @@ public class AddressServlet extends HttpServlet {
 
         service.registerAddress(address);
 
-        req.setAttribute("address", address);
+        req.getSession().setAttribute("address", address);
+        //req.setAttribute("address", address); // basis opdracht
 
         req.getRequestDispatcher("/WEB-INF/pages/address/AddressResult.jsp").forward(req, resp);
     }
