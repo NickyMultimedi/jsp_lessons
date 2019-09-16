@@ -13,13 +13,13 @@
 <body>
 <h1>Body Mass Index</h1>
 <form method="post">
-    <input name="weight" value="${weight}" placeholder="Weight in kg" type="text" />
-    <input name="height" value="${height}" placeholder="Height in m" type="text" />
+    <input name="weight" value="${bmiObject.weight}" placeholder="Weight in kg" type="text" />
+    <input name="height" value="${bmiObject.height}" placeholder="Height in m" type="text" />
     <input name="submit" value="Submit" type="submit" />
 </form>
 
-<div style="color: ${bmi>25?"red":"green"}">
-    Your BMI is ${bmi} kg/m<sup>2</sup>
+<div style="color: ${bmiObject.bmiValue>25?"red":"green"}">
+    Your BMI is ${bmiObject.bmiValue} kg/m<sup>2</sup>
 </div>
 </body>
 </html>

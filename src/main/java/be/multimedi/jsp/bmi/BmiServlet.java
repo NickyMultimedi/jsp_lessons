@@ -25,11 +25,15 @@ public class BmiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         double weight = Double.parseDouble(req.getParameter("weight"));
         double height = Double.parseDouble(req.getParameter("height"));
-        double bmi = service.calculateBmi(height, weight);
 
-        req.setAttribute("weight", weight);
-        req.setAttribute("height", height);
-        req.setAttribute("bmi", bmi);
+        Bmi bmi = new Bmi();
+        bmi.setHeight(height);
+        bmi.setWeight(weight);
+
+        double bmiValue = service.calculateBmi(bmi);
+
+        req.setAttribute("bmiObject", bmi);
+        req.setAttribute("bmiValue", bmiValue);
 
         doGet(req, resp);
     }
