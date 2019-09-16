@@ -13,6 +13,11 @@ public class AddressServlet extends HttpServlet {
     AddressService service;
 
     @Override
+    public void init() throws ServletException {
+        service = new AddressServiceImpl();
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/pages/address/AddressForm.jsp").forward(req, resp);
     }

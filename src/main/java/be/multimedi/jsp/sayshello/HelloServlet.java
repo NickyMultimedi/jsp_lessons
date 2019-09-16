@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/HelloMVC")
+@WebServlet(value="/HelloMVC", name = "HelloMVC")
 public class HelloServlet extends HttpServlet {
     private HelloService service = new HelloServiceImpl();
 
