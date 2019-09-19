@@ -18,6 +18,18 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
         <url-pattern>/HelloWorld</url-pattern>
     </servlet-mapping>
 
+    <data-source>
+        <name>java:app/datasources/StudentDS</name>
+        <class-name>org.mariadb.jdbc.MariaDbPoolDataSource</class-name>
+        <url>jdbc:mariadb://noelvaes.eu/javaeewondelgemDB</url>
+        <user>javaeewondelgem</user>
+        <password>java$$wond$lg$m2019</password>
+    </data-source>
+    <resource-ref>
+        <res-ref-name>StudentDS</res-ref-name>
+        <lookup-name>java:app/datasources/StudentDS</lookup-name>
+    </resource-ref>
+
 <!--    <jsp-config>-->
 <!--        <jsp-property-group>-->
 <!--            <url-pattern>/*</url-pattern>-->

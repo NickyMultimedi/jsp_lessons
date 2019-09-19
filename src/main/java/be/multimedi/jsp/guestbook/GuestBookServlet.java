@@ -1,17 +1,22 @@
 package be.multimedi.jsp.guestbook;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet(value = "/GuestBook", name = "GuestBook")
 public class GuestBookServlet extends HttpServlet {
-    GuestBookRepo repo = new MariaDBRepoImpl();
+    @Resource(name = "StudentDS")
+    DataSource dataSource;
+
+    GuestBookRepo repo = new MariaDBRepoImpl(dataSource);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

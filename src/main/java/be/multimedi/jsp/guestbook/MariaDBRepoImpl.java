@@ -2,10 +2,8 @@ package be.multimedi.jsp.guestbook;
 
 import be.multimedi.jsp.handlers.ConnectionHandler;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +13,23 @@ public class MariaDBRepoImpl implements GuestBookRepo {
     private final String GET_ALL_QUERY = "select * from GuestBook;";
     ConnectionHandler handler;
 
+    private DataSource dataSource;
+
     public MariaDBRepoImpl() {
         handler = ConnectionHandler.getInstance();
     }
 
+    public MariaDBRepoImpl(DataSource dataSource) {
+        this();
+        this.dataSource = dataSource;
+    }
+
     @Override
     public void submitNewEntry(GuestBookEntry entry) {
-        try (PreparedStatement prepStatement = handler.prepareStatement(NEW_ENTRY_QUERY)) {
+        try (
+                Connection con = dataSource.getConnection();
+                PreparedStatement prepStatement = con.prepareStatement(NEW_ENTRY_QUERY);
+        ) {
 
             prepStatement.setTimestamp(1, Timestamp.valueOf(entry.getDate()));
             prepStatement.setString(2, entry.getName());
